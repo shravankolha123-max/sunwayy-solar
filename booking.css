@@ -1,0 +1,169 @@
+body{
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:linear-gradient(135deg,#e3f2fd,#ffffff);
+}
+
+/* HEADER */
+
+.header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 30px;
+background:#0b4fa3;
+color:white;
+}
+
+/* BRAND (LOGO + TEXT) */
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+/* LOGO FIX */
+
+.logo{
+height:70px;
+width:auto;
+object-fit:contain;
+}
+
+/* NAV */
+
+nav{
+display:flex;
+align-items:center;
+}
+
+/* LANGUAGE DROPDOWN */
+
+select{
+padding:8px 12px;
+border-radius:20px;
+border:none;
+font-weight:600;
+cursor:pointer;
+}
+
+/* CARD */
+
+.booking-container{
+max-width:500px;
+margin:60px auto;
+background:white;
+padding:40px;
+border-radius:15px;
+box-shadow:0 15px 35px rgba(0,0,0,0.1);
+}
+
+.booking-container h1{
+text-align:center;
+color:#0b4fa3;
+}
+
+/* FORM */
+
+.form-group{
+margin-bottom:20px;
+}
+
+label{
+display:block;
+margin-bottom:5px;
+font-weight:bold;
+color:#0b4fa3;
+}
+
+input,select{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:1px solid #ddd;
+}
+
+input:focus,select:focus{
+border-color:#1e88e5;
+outline:none;
+}
+
+/* BUTTON */
+
+.book-btn{
+width:100%;
+padding:15px;
+background:#ff7a00;
+color:white;
+border:none;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+}
+
+.book-btn:hover{
+background:#e66d00;
+}
+
+/* FOOTER */
+
+footer{
+text-align:center;
+padding:15px;
+background:#0b4fa3;
+color:white;
+margin-top:40px;
+}
+
+
+
+
+/* ================= DARK MODE ================= */
+
+body.dark{
+background:#121212;
+color:white;
+}
+
+/* HEADER */
+body.dark .header{
+background:#1e1e1e;
+}
+
+/* BOOKING CARD */
+body.dark .booking-container{
+background:#1e1e1e;
+color:white;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+}
+
+/* INPUTS */
+body.dark input,
+body.dark select{
+background:#2c2c2c;
+color:white;
+border:1px solid #555;
+}
+
+/* LABELS */
+body.dark label{
+color:white;
+}
+
+/* BUTTON */
+body.dark .book-btn{
+background:#ff7a00;
+}
+
+/* FOOTER */
+body.dark footer{
+background:#1e1e1e;
+}
+
+/* KEEP SAME HERO STYLE (IF ANY IMAGE ADDED LATER) */
+body.dark .hero{
+background:
+linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+url("solar.jpg") center/cover no-repeat;
+}

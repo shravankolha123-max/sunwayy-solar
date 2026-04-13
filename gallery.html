@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery - Sunway Solar</title>
+
+<style>
+
+/* ===== BODY ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    transition: 0.3s;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: #2f4f9f;
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Button */
+.gallery-btn {
+    background: transparent;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-right: 10px;
+}
+
+.gallery-btn:hover {
+    background: #ff7a00;
+    color: white;
+}
+
+.language-switcher {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+/* ===== HEADING ===== */
+h1 {
+    text-align: center;
+    margin: 40px 0;
+    color: #2f4f9f;
+}
+
+/* ===== GALLERY GRID ===== */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 40px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.04);
+}
+
+/* ===== IMAGE ===== */
+.card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+/* ===== CAPTION ===== */
+.caption {
+    padding: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+    background: #121212;
+}
+
+body.dark .navbar {
+    background: #1f1f1f;
+}
+
+body.dark .card {
+    background: #1e1e1e;
+    color: white;
+}
+
+body.dark h1 {
+    color: #fff;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <h2>Sunway Solar Energy</h2>
+
+    <div>
+        <button class="gallery-btn" data-key="home" onclick="goHome()">Home</button>
+        <select id="languageSwitcher" class="language-switcher">
+            <option value="en">EN</option>
+            <option value="hi">HI</option>
+            <option value="mr">MR</option>
+        </select>
+        <button id="themeToggle" class="gallery-btn" onclick="toggleTheme()">🌙</button>
+    </div>
+</div>
+
+<!-- HEADING -->
+<h1 data-key="gallery_title">Our Solar Installation Work</h1>
+
+<!-- GALLERY -->
+<div class="gallery">
+
+    <div class="card">
+        <img src="images/imag1.jpeg" alt="Solar Panel Frame Installation">
+        <div class="caption" data-key="gallery_caption1">Solar Panel Frame Installation</div>
+    </div>
+
+    <div class="card">
+        <img src="images/img2.jpeg" alt="Rooftop Solar Setup">
+        <div class="caption" data-key="gallery_caption2">Rooftop Solar Setup</div>
+    </div>
+
+    <div class="card">
+        <img src="images/img3.jpeg" alt="Panel Mounting Work">
+        <div class="caption" data-key="gallery_caption3">Panel Mounting Work</div>
+    </div>
+
+    <div class="card">
+        <img src="images/img4.jpeg" alt="Before Installation">
+        <div class="caption" data-key="gallery_caption4">Before Installation</div>
+    </div>
+
+    <div class="card">
+        <img src="images/img5.jpeg" alt="Completed Solar Project">
+        <div class="caption" data-key="gallery_caption5">Completed Solar Project</div>
+    </div>
+
+    <div class="card">
+        <img src="images/img6.jpeg" alt="Customer Site Installation">
+        <div class="caption" data-key="gallery_caption6">Customer Site Installation</div>
+    </div>
+
+</div>
+
+<!-- SCRIPT -->
+<script>
+const translations = {
+    en: {
+        home: "Home",
+        gallery_title: "Our Solar Installation Work",
+        gallery_caption1: "Solar Panel Frame Installation",
+        gallery_caption2: "Rooftop Solar Setup",
+        gallery_caption3: "Panel Mounting Work",
+        gallery_caption4: "Before Installation",
+        gallery_caption5: "Completed Solar Project",
+        gallery_caption6: "Customer Site Installation"
+    },
+    hi: {
+        home: "होम",
+        gallery_title: "हमारा सौर स्थापना कार्य",
+        gallery_caption1: "सोलर पैनल फ्रेम इंस्टॉलेशन",
+        gallery_caption2: "छत पर सोलर सेटअप",
+        gallery_caption3: "पैनल माउंटिंग कार्य",
+        gallery_caption4: "इंस्टॉलेशन से पहले",
+        gallery_caption5: "पूर्ण सौर परियोजना",
+        gallery_caption6: "ग्राहक साइट इंस्टॉलेशन"
+    },
+    mr: {
+        home: "मुख्यपृष्ठ",
+        gallery_title: "आमचे सौर प्रतिष्ठापन कार्य",
+        gallery_caption1: "सोलर पॅनेल फ्रेम प्रतिष्ठापन",
+        gallery_caption2: "छतावरील सौर सेटअप",
+        gallery_caption3: "पॅनेल माउंटिंग कार्य",
+        gallery_caption4: "प्रतिष्ठापन पूर्वी",
+        gallery_caption5: "पूर्ण सौर प्रकल्प",
+        gallery_caption6: "ग्राहक साइट प्रतिष्ठापन"
+    }
+};
+
+const switcher = document.getElementById("languageSwitcher");
+const themeToggle = document.getElementById("themeToggle");
+
+function applyLanguage(lang) {
+    document.querySelectorAll("[data-key]").forEach(el => {
+        const key = el.getAttribute("data-key");
+        if (translations[lang] && translations[lang][key]) {
+            el.innerText = translations[lang][key];
+        }
+    });
+}
+
+function loadSettings() {
+    const savedLang = localStorage.getItem("lang") || "en";
+    const savedTheme = localStorage.getItem("theme") || "light";
+
+    switcher.value = savedLang;
+    applyLanguage(savedLang);
+
+    if (savedTheme === "dark") {
+        document.body.classList.add("dark");
+    }
+}
+
+switcher.addEventListener("change", function() {
+    const lang = this.value;
+    localStorage.setItem("lang", lang);
+    applyLanguage(lang);
+});
+
+window.addEventListener("DOMContentLoaded", loadSettings);
+
+function goHome() {
+    window.location.href = "index.html";
+}
+
+function toggleTheme() {
+    document.body.classList.toggle("dark");
+    localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+}
+</script>
+
+</body>
+</html>

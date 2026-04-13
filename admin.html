@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Sunwayy Solar</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+<p class="admin-hint">
+  With the backend running (<code>npm start</code> in <code>backend</code>), open this page at
+  <strong>http://localhost:5000/admin.html</strong> — not as a file from the folder.
+</p>
+
+<header class="admin-header">
+  <h1>Sunwayy Solar — submissions</h1>
+  <div class="admin-actions">
+    <label>
+      <span style="font-size:0.85rem;opacity:0.9">Admin secret (only if set in .env)</span><br>
+      <input type="password" id="adminSecret" placeholder="optional" autocomplete="off">
+    </label>
+    <button type="button" id="refreshBtn">Refresh</button>
+    <a href="index.html">← Home</a>
+  </div>
+</header>
+
+<p id="errorMsg" class="error-msg" hidden></p>
+
+<div class="status-bar">
+  <span id="dbStatus" class="pill muted">MongoDB: …</span>
+  <span id="countBookings" class="pill muted">Bookings: —</span>
+  <span id="countMessages" class="pill muted">Messages: —</span>
+  <span id="countConsult" class="pill muted">Consultations: —</span>
+</div>
+
+<main>
+  <section>
+    <h2>Installation bookings</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>When</th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>City</th>
+          <th>Bill ₹</th>
+          <th>Scheme</th>
+          <th>Size</th>
+          <th>Record ID</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyBookings"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Contact messages (home page)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>When</th>
+          <th>Message</th>
+          <th>Record ID</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyMessages"></tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Consultation requests (modal)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>When</th>
+          <th>Name</th>
+          <th>Mobile</th>
+          <th>City</th>
+          <th>Record ID</th>
+        </tr>
+      </thead>
+      <tbody id="tbodyConsult"></tbody>
+    </table>
+  </section>
+</main>
+
+<script src="admin.js"></script>
+</body>
+</html>
