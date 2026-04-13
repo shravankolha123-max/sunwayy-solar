@@ -1,10 +1,14 @@
-/* Same server as API when you open http://localhost:5000/admin.html (recommended) */
+/* Use backend on :5000 for Live Server/local; same-origin for Render/production */
 const API_BASE =
   typeof location !== "undefined" &&
-  location.protocol === "http:" &&
-  String(location.port) === "5000"
-    ? ""
-    : "http://localhost:5000";
+  (location.hostname === "127.0.0.1" || location.hostname === "localhost") &&
+  location.port === "5500"
+    ? "http://localhost:5000"
+    : typeof location !== "undefined" &&
+        (location.protocol === "http:" || location.protocol === "https:") &&
+        location.hostname
+      ? ""
+      : "http://localhost:5000";
 
 function fmtDate(iso) {
   if (!iso) return "—";

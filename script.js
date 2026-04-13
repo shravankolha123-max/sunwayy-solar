@@ -1,4 +1,14 @@
-const API_BASE = "http://localhost:5000";
+/* Use backend on :5000 for Live Server/local; same-origin for Render/production */
+const API_BASE =
+  typeof location !== "undefined" &&
+  (location.hostname === "127.0.0.1" || location.hostname === "localhost") &&
+  location.port === "5500"
+    ? "http://localhost:5000"
+    : typeof location !== "undefined" &&
+        (location.protocol === "http:" || location.protocol === "https:") &&
+        location.hostname
+      ? ""
+      : "http://localhost:5000";
 
 // =======================
 // LANGUAGE TRANSLATIONS

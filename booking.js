@@ -91,7 +91,16 @@ let size=document.getElementById("size").value;
 
 /* SEND DATA TO SERVER */
 
-const API_BASE = "http://localhost:5000";
+const API_BASE =
+  typeof location !== "undefined" &&
+  (location.hostname === "127.0.0.1" || location.hostname === "localhost") &&
+  location.port === "5500"
+    ? "http://localhost:5000"
+    : typeof location !== "undefined" &&
+        (location.protocol === "http:" || location.protocol === "https:") &&
+        location.hostname
+      ? ""
+      : "http://localhost:5000";
 
 fetch(`${API_BASE}/book`, {
 method:"POST",
@@ -115,11 +124,175 @@ return data;
 .then((data) => {
 const ref = data.id ? `\nRecord ID: ${data.id}` : "";
 alert("✅ Booking saved in the database." + ref);
+showBookingSummary(name,mobile,city,bill,scheme,size);
+downloadInvoice(name,mobile,city,bill,scheme,size,data.id);
 })
 .catch(() => {
 alert("❌ Error saving. Is the server running and MongoDB connected?");
 });
 
+}
+
+function parseSizeKw(sizeText){
+const parsed = parseFloat(String(sizeText).replace(/[^\d.]/g,""));
+return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function calculateFinancials(sizeText){
+const sizeKw = parseSizeKw(sizeText);
+const totalCost = Math.round(sizeKw * 55000);
+const subsidyPerKw = sizeKw <= 2 ? 30000 : 18000;
+const subsidy = Math.round(sizeKw * subsidyPerKw);
+const finalPayable = Math.max(totalCost - subsidy, 0);
+const emiMonthly = Math.round((finalPayable * 1.10) / 12);
+
+return {
+sizeKw,
+totalCost,
+subsidy,
+finalPayable,
+emiMonthly
+};
+}
+
+function showBookingSummary(name,mobile,city,bill,scheme,size){
+const resultEl = document.getElementById("bookingResult");
+if(!resultEl){
+return;
+}
+
+const details = calculateFinancials(size);
+
+const content=`SUNWAYY SOLAR ENERGY
+-----------------------------------------
+
+Customer Details
+-------------------------
+Name: ${name}
+Mobile: ${mobile}
+City: ${city}
+
+Project Details
+-------------------------
+System Size: ${details.sizeKw.toFixed(2)} kW
+Scheme: ${scheme}
+Monthly Bill: ₹${bill}
+
+Financial Details
+-------------------------
+Total Cost: ₹${details.totalCost}
+Government Subsidy: ₹${details.subsidy}
+Final Payable: ₹${details.finalPayable}
+
+EMI Plan (12 Months @10%)
+Monthly EMI: ₹${details.emiMonthly}
+
+-----------------------------------------
+Thank you for choosing Sunwayy Solar`;
+
+resultEl.textContent = content;
+resultEl.hidden = false;
+}
+
+let cachedLogoDataUrl = null;
+
+function readBlobAsDataUrl(blob){
+return new Promise((resolve,reject) => {
+const reader = new FileReader();
+reader.onload = () => resolve(reader.result);
+reader.onerror = reject;
+reader.readAsDataURL(blob);
+});
+}
+
+async function getLogoSource(){
+if(cachedLogoDataUrl){
+return cachedLogoDataUrl;
+}
+try{
+const res = await fetch("logo.png.png");
+if(!res.ok){
+return "logo.png.png";
+}
+const blob = await res.blob();
+cachedLogoDataUrl = await readBlobAsDataUrl(blob);
+return cachedLogoDataUrl;
+}catch{
+return "logo.png.png";
+}
+}
+
+async function downloadInvoice(name,mobile,city,bill,scheme,size,recordId){
+const details = calculateFinancials(size);
+const now = new Date();
+const dateTime = now.toLocaleString();
+const logoSrc = await getLogoSource();
+
+const invoiceHtml = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sunwayy Solar Invoice</title>
+<style>
+body{font-family:Segoe UI,Arial,sans-serif;background:#f4f7fc;padding:24px;margin:0;color:#1c2b4d;}
+.invoice{max-width:820px;margin:0 auto;background:#fff;border:1px solid #d7deea;border-radius:12px;padding:24px 28px;box-shadow:0 8px 24px rgba(0,0,0,0.08);}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;}
+.top-left{display:flex;align-items:center;gap:12px;}
+.logo{width:86px;height:86px;object-fit:contain;border-radius:8px;}
+.company{font-size:24px;font-weight:800;color:#18408f;margin:0;}
+.meta{font-size:14px;line-height:1.5;color:#47577a;text-align:right;}
+.line{margin:16px 0;border-top:2px dashed #b9c6e0;}
+h3{margin:14px 0 8px;color:#1f3f87;}
+.row{margin:5px 0;font-size:15px;}
+.label{font-weight:700;}
+.thank{margin-top:18px;font-weight:700;color:#18408f;}
+</style>
+</head>
+<body>
+  <div class="invoice">
+    <div class="top">
+      <div class="top-left">
+        <img class="logo" src="${logoSrc}" alt="Sunwayy Solar Energy logo">
+        <h1 class="company">SUNWAYY SOLAR ENERGY</h1>
+      </div>
+      <div class="meta">
+        <div><strong>Date & Time:</strong> ${dateTime}</div>
+        <div><strong>Record ID:</strong> ${recordId || "N/A"}</div>
+      </div>
+    </div>
+
+    <div class="line"></div>
+
+    <h3>Customer Details</h3>
+    <div class="row"><span class="label">Name:</span> ${name}</div>
+    <div class="row"><span class="label">Mobile:</span> ${mobile}</div>
+    <div class="row"><span class="label">City:</span> ${city}</div>
+
+    <h3>Project Details</h3>
+    <div class="row"><span class="label">System Size:</span> ${details.sizeKw.toFixed(2)} kW</div>
+    <div class="row"><span class="label">Scheme:</span> ${scheme}</div>
+    <div class="row"><span class="label">Monthly Bill:</span> ₹${bill}</div>
+
+    <h3>Financial Details</h3>
+    <div class="row"><span class="label">Total Cost:</span> ₹${details.totalCost}</div>
+    <div class="row"><span class="label">Government Subsidy:</span> ₹${details.subsidy}</div>
+    <div class="row"><span class="label">Final Payable:</span> ₹${details.finalPayable}</div>
+
+    <h3>EMI Plan (12 Months @10%)</h3>
+    <div class="row"><span class="label">Monthly EMI:</span> ₹${details.emiMonthly}</div>
+
+    <div class="line"></div>
+    <div class="thank">Thank you for choosing Sunwayy Solar.</div>
+  </div>
+</body>
+</html>`;
+
+const blob = new Blob([invoiceHtml],{type:"text/html"});
+const link = document.createElement("a");
+link.href = URL.createObjectURL(blob);
+link.download = `sunwayy-invoice-${now.getTime()}.html`;
+link.click();
+URL.revokeObjectURL(link.href);
 }
 
 
