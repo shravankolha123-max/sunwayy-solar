@@ -64,6 +64,40 @@ text-align:center;
 color:#0b4fa3;
 }
 
+.booking-subtitle{
+text-align:center;
+margin:8px 0 22px;
+color:#466089;
+line-height:1.5;
+}
+
+.booking-highlights{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:12px;
+margin-bottom:24px;
+}
+
+.highlight-card{
+background:#f6f9ff;
+border:1px solid #d7e4fb;
+border-radius:12px;
+padding:12px;
+}
+
+.highlight-card h3{
+margin:0 0 6px;
+font-size:15px;
+color:#0b4fa3;
+}
+
+.highlight-card p{
+margin:0;
+font-size:13px;
+line-height:1.45;
+color:#4b5f84;
+}
+
 /* FORM */
 
 .form-group{
@@ -118,6 +152,16 @@ color:#1b2c55;
 font-size:15px;
 }
 
+.booking-note{
+margin-top:20px;
+padding:12px 14px;
+border-radius:10px;
+background:#fff7eb;
+border:1px solid #ffd8aa;
+color:#7b4a0f;
+font-size:14px;
+}
+
 /* FOOTER */
 
 footer{
@@ -150,6 +194,23 @@ color:white;
 box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
+body.dark .booking-subtitle{
+color:#c9d6f0;
+}
+
+body.dark .highlight-card{
+background:#242424;
+border-color:#3e3e3e;
+}
+
+body.dark .highlight-card h3{
+color:#8db9ff;
+}
+
+body.dark .highlight-card p{
+color:#d7d7d7;
+}
+
 /* INPUTS */
 body.dark input,
 body.dark select{
@@ -172,6 +233,12 @@ body.dark .booking-result{
 background:#2a2a2a;
 border-color:#4a4a4a;
 color:#f1f1f1;
+}
+
+body.dark .booking-note{
+background:#2e2518;
+border-color:#6a4f2f;
+color:#ffd7a7;
 }
 
 /* FOOTER */

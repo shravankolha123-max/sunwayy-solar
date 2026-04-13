@@ -13,7 +13,16 @@ scheme2:"PM KUSUM Scheme",
 scheme3:"Grid Connected Rooftop Programme",
 size:"Select Solar System Size",
 book:"Book Now",
-footer:"© Sunwayy Solar Energy"
+footer:"© Sunwayy Solar Energy",
+booking_subtitle:"Get a quick estimate, subsidy outlook, and downloadable invoice in one step.",
+highlight_1_title:"Quick Estimate",
+highlight_1_desc:"Instant cost, subsidy, and EMI insights based on your selected system size.",
+highlight_2_title:"Subsidy Ready",
+highlight_2_desc:"Built around major government rooftop schemes to simplify planning.",
+highlight_3_title:"Invoice Download",
+highlight_3_desc:"Professional invoice generated automatically after successful booking.",
+tip_label:"Tip:",
+tip_desc:"Enter your real monthly bill for a more practical solar size recommendation."
 },
 
 hi:{
@@ -29,7 +38,16 @@ scheme2:"पीएम कुसुम योजना",
 scheme3:"ग्रिड रूफटॉप योजना",
 size:"सोलर साइज चुनें",
 book:"बुक करें",
-footer:"© सनवे सोलर एनर्जी"
+footer:"© सनवे सोलर एनर्जी",
+booking_subtitle:"एक ही स्टेप में तेज अनुमान, सब्सिडी जानकारी और डाउनलोड होने वाली इनवॉइस पाएं।",
+highlight_1_title:"त्वरित अनुमान",
+highlight_1_desc:"आपके चुने हुए सिस्टम साइज के आधार पर लागत, सब्सिडी और EMI की जानकारी।",
+highlight_2_title:"सब्सिडी तैयार",
+highlight_2_desc:"मुख्य सरकारी रूफटॉप योजनाओं को ध्यान में रखकर आसान प्लानिंग।",
+highlight_3_title:"इनवॉइस डाउनलोड",
+highlight_3_desc:"सफल बुकिंग के बाद प्रोफेशनल इनवॉइस अपने आप तैयार होती है।",
+tip_label:"टिप:",
+tip_desc:"बेहतर सोलर सिफारिश के लिए अपना वास्तविक मासिक बिजली बिल दर्ज करें।"
 },
 
 mr:{
@@ -45,7 +63,16 @@ scheme2:"पीएम कुसुम योजना",
 scheme3:"ग्रिड रूफटॉप योजना",
 size:"सोलर साइज निवडा",
 book:"बुक करा",
-footer:"© सनवे सोलर एनर्जी"
+footer:"© सनवे सोलर एनर्जी",
+booking_subtitle:"एकाच स्टेपमध्ये जलद अंदाज, सबसिडी माहिती आणि डाउनलोड होणारे इनवॉइस मिळवा.",
+highlight_1_title:"जलद अंदाज",
+highlight_1_desc:"तुमच्या निवडलेल्या सिस्टीम साइजवर आधारित खर्च, सबसिडी आणि EMI माहिती.",
+highlight_2_title:"सबसिडी तयार",
+highlight_2_desc:"मुख्य सरकारी रूफटॉप योजनांसाठी सोपी आणि स्पष्ट योजना मदत.",
+highlight_3_title:"इनवॉइस डाउनलोड",
+highlight_3_desc:"यशस्वी बुकिंगनंतर प्रोफेशनल इनवॉइस आपोआप तयार होते.",
+tip_label:"टीप:",
+tip_desc:"अधिक अचूक सोलर शिफारसीसाठी तुमचा खरा मासिक वीज बिल भरा."
 }
 
 };

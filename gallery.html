@@ -112,6 +112,105 @@ body.dark h1 {
     color: #fff;
 }
 
+.gallery-wrap{
+padding:0 34px 40px;
+}
+
+.gallery-toolbar{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:8px;
+}
+
+.filter-btn{
+border:none;
+background:#e5ecfb;
+color:#2f4f9f;
+padding:10px 16px;
+border-radius:999px;
+font-weight:700;
+cursor:pointer;
+transition:0.25s;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+background:#2f4f9f;
+color:#fff;
+}
+
+.card{
+position:relative;
+cursor:pointer;
+}
+
+.chip{
+position:absolute;
+top:12px;
+left:12px;
+background:rgba(12,32,80,0.85);
+color:#fff;
+padding:6px 10px;
+border-radius:999px;
+font-size:12px;
+font-weight:700;
+}
+
+.card p{
+margin:0;
+font-size:14px;
+color:#5b6783;
+}
+
+.lightbox{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,0.85);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:10000;
+padding:20px;
+}
+
+.lightbox.show{
+display:flex;
+}
+
+.lightbox img{
+max-width:min(95vw,900px);
+max-height:80vh;
+border-radius:12px;
+box-shadow:0 20px 30px rgba(0,0,0,0.4);
+}
+
+.lightbox-close{
+position:absolute;
+top:20px;
+right:26px;
+color:#fff;
+font-size:34px;
+cursor:pointer;
+font-weight:700;
+}
+
+body.dark .filter-btn{
+background:#2a2a2a;
+color:#d7e2ff;
+}
+
+body.dark .filter-btn.active,
+body.dark .filter-btn:hover{
+background:#ff7a00;
+color:#fff;
+}
+
+body.dark .card p{
+color:#ced2dc;
+}
+
 </style>
 
 </head>
@@ -120,7 +219,7 @@ body.dark h1 {
 
 <!-- NAVBAR -->
 <div class="navbar">
-    <h2>Sunway Solar Energy</h2>
+    <h2 data-key="brand">Sunway Solar Energy</h2>
 
     <div>
         <button class="gallery-btn" data-key="home" onclick="goHome()">Home</button>
@@ -136,73 +235,141 @@ body.dark h1 {
 <!-- HEADING -->
 <h1 data-key="gallery_title">Our Solar Installation Work</h1>
 
-<!-- GALLERY -->
-<div class="gallery">
+<div class="gallery-wrap">
+<div class="gallery-toolbar">
+    <button class="filter-btn active" data-filter="all" data-key="filter_all">All</button>
+    <button class="filter-btn" data-filter="residential" data-key="filter_residential">Residential</button>
+    <button class="filter-btn" data-filter="commercial" data-key="filter_commercial">Commercial</button>
+    <button class="filter-btn" data-filter="installation" data-key="filter_installation">Installation</button>
+</div>
 
-    <div class="card">
+<!-- GALLERY -->
+<div class="gallery" id="galleryGrid">
+
+    <div class="card" data-category="installation residential">
+        <span class="chip" data-key="chip_residential">Residential</span>
         <img src="images/imag1.jpeg" alt="Solar Panel Frame Installation">
         <div class="caption" data-key="gallery_caption1">Solar Panel Frame Installation</div>
+        <p data-key="gallery_desc1">Frame alignment and structure setup stage.</p>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="installation residential">
+        <span class="chip" data-key="chip_installation">Installation</span>
         <img src="images/img2.jpeg" alt="Rooftop Solar Setup">
         <div class="caption" data-key="gallery_caption2">Rooftop Solar Setup</div>
+        <p data-key="gallery_desc2">Rooftop module placement with cable channels.</p>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="installation commercial">
+        <span class="chip" data-key="chip_commercial">Commercial</span>
         <img src="images/img3.jpeg" alt="Panel Mounting Work">
         <div class="caption" data-key="gallery_caption3">Panel Mounting Work</div>
+        <p data-key="gallery_desc3">Strong panel mount installation for long-term safety.</p>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="residential">
+        <span class="chip" data-key="chip_residential">Residential</span>
         <img src="images/img4.jpeg" alt="Before Installation">
         <div class="caption" data-key="gallery_caption4">Before Installation</div>
+        <p data-key="gallery_desc4">Site condition before system deployment.</p>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="commercial">
+        <span class="chip" data-key="chip_commercial">Commercial</span>
         <img src="images/img5.jpeg" alt="Completed Solar Project">
         <div class="caption" data-key="gallery_caption5">Completed Solar Project</div>
+        <p data-key="gallery_desc5">Final commissioned setup ready for generation.</p>
     </div>
 
-    <div class="card">
+    <div class="card" data-category="residential installation">
+        <span class="chip" data-key="chip_installation">Installation</span>
         <img src="images/img6.jpeg" alt="Customer Site Installation">
         <div class="caption" data-key="gallery_caption6">Customer Site Installation</div>
+        <p data-key="gallery_desc6">On-site implementation with customer walkthrough.</p>
     </div>
 
+</div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <img id="lightboxImg" alt="Expanded gallery image">
 </div>
 
 <!-- SCRIPT -->
 <script>
 const translations = {
     en: {
+        brand: "Sunway Solar Energy",
         home: "Home",
+        filter_all: "All",
+        filter_residential: "Residential",
+        filter_commercial: "Commercial",
+        filter_installation: "Installation",
+        chip_residential: "Residential",
+        chip_commercial: "Commercial",
+        chip_installation: "Installation",
         gallery_title: "Our Solar Installation Work",
         gallery_caption1: "Solar Panel Frame Installation",
         gallery_caption2: "Rooftop Solar Setup",
         gallery_caption3: "Panel Mounting Work",
         gallery_caption4: "Before Installation",
         gallery_caption5: "Completed Solar Project",
-        gallery_caption6: "Customer Site Installation"
+        gallery_caption6: "Customer Site Installation",
+        gallery_desc1: "Frame alignment and structure setup stage.",
+        gallery_desc2: "Rooftop module placement with cable channels.",
+        gallery_desc3: "Strong panel mount installation for long-term safety.",
+        gallery_desc4: "Site condition before system deployment.",
+        gallery_desc5: "Final commissioned setup ready for generation.",
+        gallery_desc6: "On-site implementation with customer walkthrough."
     },
     hi: {
+        brand: "सनवे सोलर एनर्जी",
         home: "होम",
+        filter_all: "सभी",
+        filter_residential: "रेजिडेंशियल",
+        filter_commercial: "कमर्शियल",
+        filter_installation: "इंस्टॉलेशन",
+        chip_residential: "रेजिडेंशियल",
+        chip_commercial: "कमर्शियल",
+        chip_installation: "इंस्टॉलेशन",
         gallery_title: "हमारा सौर स्थापना कार्य",
         gallery_caption1: "सोलर पैनल फ्रेम इंस्टॉलेशन",
         gallery_caption2: "छत पर सोलर सेटअप",
         gallery_caption3: "पैनल माउंटिंग कार्य",
         gallery_caption4: "इंस्टॉलेशन से पहले",
         gallery_caption5: "पूर्ण सौर परियोजना",
-        gallery_caption6: "ग्राहक साइट इंस्टॉलेशन"
+        gallery_caption6: "ग्राहक साइट इंस्टॉलेशन",
+        gallery_desc1: "फ्रेम अलाइनमेंट और स्ट्रक्चर सेटअप का चरण।",
+        gallery_desc2: "केबल चैनल के साथ छत पर मॉड्यूल प्लेसमेंट।",
+        gallery_desc3: "लंबी सुरक्षा के लिए मजबूत पैनल माउंट इंस्टॉलेशन।",
+        gallery_desc4: "सिस्टम लगाने से पहले साइट की स्थिति।",
+        gallery_desc5: "ऊर्जा उत्पादन के लिए तैयार अंतिम सेटअप।",
+        gallery_desc6: "ग्राहक के साथ ऑन-साइट इंस्टॉलेशन कार्य।"
     },
     mr: {
+        brand: "सनवे सोलर एनर्जी",
         home: "मुख्यपृष्ठ",
+        filter_all: "सर्व",
+        filter_residential: "घरगुती",
+        filter_commercial: "व्यावसायिक",
+        filter_installation: "इंस्टॉलेशन",
+        chip_residential: "घरगुती",
+        chip_commercial: "व्यावसायिक",
+        chip_installation: "इंस्टॉलेशन",
         gallery_title: "आमचे सौर प्रतिष्ठापन कार्य",
         gallery_caption1: "सोलर पॅनेल फ्रेम प्रतिष्ठापन",
         gallery_caption2: "छतावरील सौर सेटअप",
         gallery_caption3: "पॅनेल माउंटिंग कार्य",
         gallery_caption4: "प्रतिष्ठापन पूर्वी",
         gallery_caption5: "पूर्ण सौर प्रकल्प",
-        gallery_caption6: "ग्राहक साइट प्रतिष्ठापन"
+        gallery_caption6: "ग्राहक साइट प्रतिष्ठापन",
+        gallery_desc1: "फ्रेम अलाइनमेंट आणि स्ट्रक्चर सेटअपचा टप्पा.",
+        gallery_desc2: "केबल चॅनेलसह छतावरील मॉड्यूल बसवणी.",
+        gallery_desc3: "दीर्घकालीन सुरक्षिततेसाठी मजबूत पॅनेल माउंटिंग.",
+        gallery_desc4: "सिस्टीम बसवण्यापूर्वी साइटची स्थिती.",
+        gallery_desc5: "ऊर्जा निर्मितीसाठी सज्ज अंतिम सेटअप.",
+        gallery_desc6: "ग्राहक मार्गदर्शनासह ऑन-साइट इंस्टॉलेशन."
     }
 };
 
@@ -246,6 +413,39 @@ function toggleTheme() {
     document.body.classList.toggle("dark");
     localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
 }
+
+const filterBtns = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".gallery .card");
+
+filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const filter = btn.dataset.filter;
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        cards.forEach(card => {
+            const categories = card.dataset.category || "";
+            card.style.display = filter === "all" || categories.includes(filter) ? "" : "none";
+        });
+    });
+});
+
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightboxImg");
+const lightboxClose = document.getElementById("lightboxClose");
+
+cards.forEach(card => {
+    card.addEventListener("click", () => {
+        const img = card.querySelector("img");
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightbox.classList.add("show");
+    });
+});
+
+lightboxClose.addEventListener("click", () => lightbox.classList.remove("show"));
+lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) lightbox.classList.remove("show");
+});
 </script>
 
 </body>

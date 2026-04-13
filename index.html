@@ -22,7 +22,7 @@
 <a href="#services" data-key="services">Services</a>
 <a href="#subsidy" data-key="subsidy">Subsidy</a>
 <a href="#contact" data-key="contact">Contact</a>
-<button class="gallery-btn" data-key="gallery" onclick="openGallery()">Gallery</button>
+<a href="gallery.html" class="gallery-btn" data-key="gallery">Gallery</a>
 <button id="themeToggle">🌙</button>
 
 <select id="languageSwitcher">
@@ -41,10 +41,34 @@
 <h1 data-key="hero_title">Clean Solar Energy for Your Home</h1>
 <p data-key="hero_desc">Save electricity bills with solar installation</p>
 
-<a href="booking.html">
-<button class="btn" data-key="consult">Get Consultation</button>
-</a>
+<div class="hero-actions">
+  <a href="booking.html">
+  <button class="btn" data-key="consult">Get Consultation</button>
+  </a>
+  <a href="#services" class="btn btn-secondary" data-key="view_services">View Services</a>
+</div>
 
+</section>
+
+<section class="stats-section reveal-on-scroll">
+<div class="stats-grid">
+<article class="stat-card">
+<h3 class="stat-number" data-target="300">0</h3>
+<p data-key="stat_installations">Installations Completed</p>
+</article>
+<article class="stat-card">
+<h3 class="stat-number" data-target="30">0</h3>
+<p data-key="stat_panel_life">Years Panel Life</p>
+</article>
+<article class="stat-card">
+<h3 class="stat-number" data-target="100">0</h3>
+<p data-key="stat_bill_saving">Bill Saving Potential (%)</p>
+</article>
+<article class="stat-card">
+<h3 class="stat-number" data-target="24">0</h3>
+<p data-key="stat_support">Support Availability (Hours)</p>
+</article>
+</div>
 </section>
 
 
@@ -80,6 +104,59 @@
 
 </div>
 
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="trust-section">
+  <h2 class="section-title" data-key="why_title">Why Choose Sunwayy Solar</h2>
+  <div class="trust-grid">
+    <article class="trust-card">
+      <span class="trust-icon">25+</span>
+      <h3 data-key="why_warranty_title">Long Warranty Support</h3>
+      <p data-key="why_warranty_desc">Durable solar components with reliable installation and after-sales help.</p>
+    </article>
+    <article class="trust-card">
+      <span class="trust-icon">100%</span>
+      <h3 data-key="why_subsidy_title">Subsidy Guidance</h3>
+      <p data-key="why_subsidy_desc">End-to-end support for PM Surya Ghar and other relevant government schemes.</p>
+    </article>
+    <article class="trust-card">
+      <span class="trust-icon">48h</span>
+      <h3 data-key="why_response_title">Fast Site Response</h3>
+      <p data-key="why_response_desc">Quick rooftop assessment and transparent recommendations for your home.</p>
+    </article>
+    <article class="trust-card">
+      <span class="trust-icon">24/7</span>
+      <h3 data-key="why_maintenance_title">Maintenance Help</h3>
+      <p data-key="why_maintenance_desc">Prompt troubleshooting and periodic checks to keep your system efficient.</p>
+    </article>
+  </div>
+</section>
+
+<section class="process-section reveal-on-scroll">
+  <h2 class="section-title" data-key="process_title">How We Deliver Your Solar Project</h2>
+  <div class="process-grid">
+    <article class="process-step">
+      <span>01</span>
+      <h3 data-key="process_1_title">Site Survey</h3>
+      <p data-key="process_1_desc">We inspect roof area, shadow conditions, and energy usage to recommend the right system.</p>
+    </article>
+    <article class="process-step">
+      <span>02</span>
+      <h3 data-key="process_2_title">Design & Subsidy Planning</h3>
+      <p data-key="process_2_desc">Detailed layout, generation estimate, and complete support for eligible subsidy paperwork.</p>
+    </article>
+    <article class="process-step">
+      <span>03</span>
+      <h3 data-key="process_3_title">Installation & Testing</h3>
+      <p data-key="process_3_desc">Safe mounting, wiring, inverter setup, and quality testing before handover.</p>
+    </article>
+    <article class="process-step">
+      <span>04</span>
+      <h3 data-key="process_4_title">Monitoring & Maintenance</h3>
+      <p data-key="process_4_desc">Performance guidance and after-installation support to keep output at best levels.</p>
+    </article>
+  </div>
 </section>
 
 <!-- SUBSIDY -->
@@ -184,7 +261,7 @@ Installing solar panels helps reduce electricity bills and provides clean, renew
 </section>
 <section class="converter-section">
 
-<h2>Currency Converter</h2>
+<h2 data-key="converter_title">Currency Converter</h2>
 
 <div class="converter-item">
 
@@ -224,7 +301,7 @@ Click to Convert Currency
 <option value="CAD">CAD (Canada)</option>
 </select>
 
-<button onclick="convertCurrency()">Convert</button>
+<button onclick="convertCurrency()" data-key="convert_btn">Convert</button>
 
 <h3 id="result"></h3>
 
@@ -256,15 +333,57 @@ Click to Convert Currency
 
 </section>
 
+<section class="testimonials-section reveal-on-scroll">
+<h2 class="section-title" data-key="testimonials_title">What Customers Say</h2>
+<div class="testimonial-grid">
+<article class="testimonial-card">
+<p data-key="testimonial_1_text">"Very smooth installation process. Team explained subsidy steps clearly and the system runs perfectly."</p>
+<h4 data-key="testimonial_1_name">- Homeowner, Jalgaon</h4>
+</article>
+<article class="testimonial-card">
+<p data-key="testimonial_2_text">"From site visit to commissioning, everything was professional. Our electricity bill dropped significantly."</p>
+<h4 data-key="testimonial_2_name">- Shop Owner, Tambapura</h4>
+</article>
+<article class="testimonial-card">
+<p data-key="testimonial_3_text">"Good after-sales support and quick response whenever we needed maintenance guidance."</p>
+<h4 data-key="testimonial_3_name">- Family User, Jeevan Nagar</h4>
+</article>
+</div>
+</section>
+
 
 <!-- FOOTER -->
-<footer>
-<p>© Sunwayy Solar Energy</p>
+<footer class="premium-footer">
+  <div class="footer-grid">
+    <div>
+      <h3 data-key="footer_brand_title">Sunwayy Solar Energy</h3>
+      <p data-key="footer_brand_desc">Clean, affordable, and reliable rooftop solar solutions for homes and businesses.</p>
+    </div>
+    <div>
+      <h4 data-key="footer_links_title">Quick Links</h4>
+      <a href="#services" data-key="footer_link_services">Services</a>
+      <a href="#subsidy" data-key="footer_link_subsidy">Subsidy</a>
+      <a href="booking.html" data-key="footer_link_booking">Book Installation</a>
+      <a href="gallery.html" data-key="footer_link_gallery">Gallery</a>
+    </div>
+    <div>
+      <h4 data-key="footer_contact_title">Contact</h4>
+      <p data-key="footer_location">Jalgaon, Maharashtra</p>
+      <a href="tel:+918830580202">+91 8830580202</a>
+      <a href="mailto:cvj6368@gmail.com">cvj6368@gmail.com</a>
+    </div>
+  </div>
+  <p class="footer-copy" data-key="footer_copy">© Sunwayy Solar Energy. All rights reserved.</p>
 </footer>
+
+<div class="quick-actions">
+  <a class="quick-btn call-btn" href="tel:+918830580202" data-key="call_now">Call Now</a>
+  <a class="quick-btn wa-btn" href="https://wa.me/918830580202" target="_blank" rel="noopener noreferrer" data-key="whatsapp">WhatsApp</a>
+</div>
 
 <script type="module" src="script.js"></script>
 <!-- OPEN BUTTON -->
-<button class="open-modal-btn">Get Free Consultation</button>
+<button class="open-modal-btn" data-key="free_consultation">Get Free Consultation</button>
 
 <!-- MODAL -->
 <div id="modal" class="modal">
@@ -273,23 +392,18 @@ Click to Convert Currency
 
     <span class="close-btn">&times;</span>
 
-    <h2>Free Solar Consultation</h2>
+    <h2 data-key="modal_title">Free Solar Consultation</h2>
 
-    <p>Fill your details and we will contact you</p>
+    <p data-key="modal_desc">Fill your details and we will contact you</p>
 
     <input type="text" id="consultationName" placeholder="Your Name">
     <input type="tel" id="consultationMobile" placeholder="Mobile Number">
     <input type="text" id="consultationCity" placeholder="City">
 
-    <button type="button" class="submit-btn" id="consultationSubmit">Submit</button>
+    <button type="button" class="submit-btn" id="consultationSubmit" data-key="submit">Submit</button>
 
   </div>
 
 </div>
-<script>
-function openGallery() {
-    window.location.href = "gallery.html";
-}
-</script>
 </body>
 </html>

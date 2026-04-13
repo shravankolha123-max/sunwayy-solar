@@ -902,3 +902,378 @@ body.dark .gallery-btn {
     background: transparent;
     color: #ffffff;
 }
+
+/* ===== Premium UI additions ===== */
+.hero-actions{
+display:flex;
+gap:14px;
+align-items:center;
+justify-content:center;
+flex-wrap:wrap;
+margin-top:22px;
+}
+
+.btn-secondary{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+padding:13px 28px;
+border-radius:30px;
+font-weight:700;
+background:transparent;
+color:#fff;
+border:2px solid rgba(255,255,255,0.8);
+transition:0.3s;
+}
+
+.btn-secondary:hover{
+background:#fff;
+color:#0b4fa3;
+transform:translateY(-2px);
+}
+
+.section-title{
+font-size:34px;
+margin-bottom:30px;
+text-align:center;
+color:#0b4fa3;
+}
+
+.trust-section{
+padding:70px 10%;
+background:linear-gradient(180deg,#ffffff 0%,#eef5ff 100%);
+}
+
+.trust-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+gap:20px;
+}
+
+.trust-card{
+background:#fff;
+border:1px solid #dce8ff;
+border-radius:16px;
+padding:22px;
+box-shadow:0 10px 20px rgba(11,79,163,0.08);
+transition:0.3s;
+}
+
+.trust-card:hover{
+transform:translateY(-6px);
+box-shadow:0 16px 28px rgba(11,79,163,0.13);
+}
+
+.trust-icon{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-width:54px;
+height:54px;
+padding:0 10px;
+background:#0b4fa3;
+color:#fff;
+font-weight:800;
+border-radius:14px;
+margin-bottom:12px;
+}
+
+.trust-card h3{
+margin:0 0 10px;
+color:#153b80;
+font-size:1.1rem;
+}
+
+.trust-card p{
+margin:0;
+line-height:1.5;
+color:#38465f;
+}
+
+.quick-actions{
+position:fixed;
+right:16px;
+bottom:18px;
+display:flex;
+flex-direction:column;
+gap:10px;
+z-index:9998;
+}
+
+.quick-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-weight:700;
+padding:11px 16px;
+border-radius:999px;
+color:#fff;
+box-shadow:0 8px 18px rgba(0,0,0,0.25);
+transition:transform 0.2s,opacity 0.2s;
+}
+
+.quick-btn:hover{
+transform:translateY(-2px);
+opacity:0.95;
+}
+
+.call-btn{
+background:#0b4fa3;
+}
+
+.wa-btn{
+background:#25d366;
+}
+
+body.dark .trust-section{
+background:#121212;
+}
+
+body.dark .trust-card{
+background:#1f1f1f;
+border-color:#333;
+}
+
+body.dark .trust-card h3{
+color:#89b8ff;
+}
+
+body.dark .trust-card p{
+color:#d3d3d3;
+}
+
+body.dark .btn-secondary{
+border-color:#ffb066;
+color:#ffb066;
+}
+
+body.dark .btn-secondary:hover{
+background:#ff7a00;
+border-color:#ff7a00;
+color:#fff;
+}
+
+@media(max-width:768px){
+.section-title{
+font-size:28px;
+}
+.quick-actions{
+right:12px;
+bottom:12px;
+}
+.quick-btn{
+padding:10px 14px;
+font-size:14px;
+}
+}
+
+.stats-section{
+padding:26px 10% 8px;
+background:#f4f9ff;
+}
+
+.stats-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:14px;
+}
+
+.stat-card{
+background:#ffffff;
+border:1px solid #d8e4fb;
+border-radius:14px;
+padding:16px;
+text-align:center;
+box-shadow:0 8px 18px rgba(11,79,163,0.08);
+}
+
+.stat-number{
+font-size:30px;
+color:#0b4fa3;
+margin:0 0 4px;
+font-weight:800;
+}
+
+.stat-card p{
+margin:0;
+color:#4d5b74;
+font-weight:600;
+}
+
+.testimonials-section{
+padding:70px 10%;
+background:#eef5ff;
+}
+
+.testimonial-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:20px;
+}
+
+.testimonial-card{
+background:#fff;
+border-radius:16px;
+padding:22px;
+border:1px solid #dce8ff;
+box-shadow:0 10px 18px rgba(11,79,163,0.08);
+position:relative;
+}
+
+.testimonial-card::before{
+content:"''";
+font-size:52px;
+position:absolute;
+top:-8px;
+left:12px;
+color:#c9daf9;
+font-family:Georgia,serif;
+line-height:1;
+}
+
+.testimonial-card p{
+margin:8px 0 14px;
+line-height:1.6;
+color:#37445d;
+}
+
+.testimonial-card h4{
+margin:0;
+color:#0b4fa3;
+font-size:15px;
+}
+
+.reveal-on-scroll{
+opacity:0;
+transform:translateY(24px);
+transition:opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-on-scroll.visible{
+opacity:1;
+transform:translateY(0);
+}
+
+body.dark .stats-section,
+body.dark .testimonials-section{
+background:#121212;
+}
+
+body.dark .stat-card,
+body.dark .testimonial-card{
+background:#1f1f1f;
+border-color:#343434;
+}
+
+body.dark .stat-card p,
+body.dark .testimonial-card p{
+color:#d2d2d2;
+}
+
+body.dark .stat-number,
+body.dark .testimonial-card h4{
+color:#89b8ff;
+}
+
+.process-section{
+padding:68px 10%;
+background:#ffffff;
+}
+
+.process-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:18px;
+}
+
+.process-step{
+background:#f7faff;
+border:1px solid #dbe7fe;
+border-radius:16px;
+padding:20px;
+position:relative;
+box-shadow:0 8px 18px rgba(11,79,163,0.08);
+}
+
+.process-step span{
+display:inline-flex;
+width:40px;
+height:40px;
+border-radius:12px;
+background:#0b4fa3;
+color:#fff;
+align-items:center;
+justify-content:center;
+font-weight:800;
+margin-bottom:12px;
+}
+
+.process-step h3{
+margin:0 0 8px;
+color:#0f377b;
+}
+
+.process-step p{
+margin:0;
+line-height:1.55;
+color:#3e4d67;
+}
+
+.premium-footer{
+padding:45px 10% 18px;
+background:#0b2f66;
+color:#d7e6ff;
+}
+
+.footer-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:24px;
+}
+
+.premium-footer h3,
+.premium-footer h4{
+margin:0 0 10px;
+color:#ffffff;
+}
+
+.premium-footer a{
+display:block;
+color:#d7e6ff;
+text-decoration:none;
+margin:6px 0;
+}
+
+.premium-footer a:hover{
+color:#9dccff;
+}
+
+.footer-copy{
+margin-top:22px;
+padding-top:12px;
+border-top:1px solid rgba(255,255,255,0.2);
+text-align:center;
+}
+
+body.dark .process-section{
+background:#121212;
+}
+
+body.dark .process-step{
+background:#1f1f1f;
+border-color:#353535;
+}
+
+body.dark .process-step h3{
+color:#8db9ff;
+}
+
+body.dark .process-step p{
+color:#d4d4d4;
+}
+
+body.dark .premium-footer{
+background:#101010;
+}
