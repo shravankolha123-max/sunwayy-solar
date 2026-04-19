@@ -3,12 +3,12 @@ const API_BASE =
   typeof location !== "undefined" &&
   (location.hostname === "127.0.0.1" || location.hostname === "localhost") &&
   location.port === "5500"
-    ? "http://localhost:5000"
+    ? "https://sunwayy-solar.onrender.com"
     : typeof location !== "undefined" &&
         (location.protocol === "http:" || location.protocol === "https:") &&
         location.hostname
       ? ""
-      : "http://localhost:5000";
+      : "https://sunwayy-solar.onrender.com";
 
 function fmtDate(iso) {
   if (!iso) return "—";
@@ -60,7 +60,7 @@ async function loadRecords() {
     if (!msg) msg = "Failed to load records.";
     if (res.status === 404) {
       msg +=
-        " Start the backend, then open admin at http://localhost:5000/admin.html (do not open the file from disk).";
+        " Start the backend, then open admin at https://sunwayy-solar.onrender.com/admin.html (do not open the file from disk).";
     }
     setError(errEl, msg);
     return;

@@ -122,12 +122,12 @@ const API_BASE =
   typeof location !== "undefined" &&
   (location.hostname === "127.0.0.1" || location.hostname === "localhost") &&
   location.port === "5500"
-    ? "http://localhost:5000"
+    ? "https://sunwayy-solar.onrender.com"
     : typeof location !== "undefined" &&
         (location.protocol === "http:" || location.protocol === "https:") &&
         location.hostname
       ? ""
-      : "http://localhost:5000";
+      : "https://sunwayy-solar.onrender.com";
 
 fetch(`${API_BASE}/book`, {
 method:"POST",
